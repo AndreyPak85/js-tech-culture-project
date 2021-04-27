@@ -76,15 +76,49 @@ gift.addEventListener("click", (e) => {
  * На первой странице реализовать слайдер
  */
 let count = 0;
-const mainSlider = document.querySelectorAll(".main-slider .slide");
-setInterval(() => {
-    if(count == 5) count = 0;
-    mainSlider[count].classList.add("slide-active");
-    mainSlider[mainSlider.length-1].classList.remove("slide-active");
-    if (count > 0) {
-        mainSlider[count].classList.add("slide-active");
-        mainSlider[count-1].classList.remove("slide-active");
-    }
-    count++;
-}, 1000)
+// const mainSlider = document.querySelectorAll(".main-slider .slide");
+// setInterval(() => {
+//     if(count == 5) count = 0;
+//     mainSlider[count].classList.add("slide-active");
+//     mainSlider[mainSlider.length-1].classList.remove("slide-active");
+//     if (count > 0) {
+//         mainSlider[count].classList.add("slide-active");
+//         mainSlider[count-1].classList.remove("slide-active");
+//     }
+//     count++;
+// }, 1000)
 
+/** 
+ * Реализовать сладер #2
+ */
+
+const arrowLeft = document.querySelector("#arrow-left");
+const arrowRight = document.querySelector("#arrow-right");
+const servicesSlider = document.querySelector(".services-slider");
+const servicesSlides = servicesSlider.querySelectorAll(".slide");
+const overlayWidth = parseInt(window.getComputedStyle(servicesSlider).width);
+let offset = 0;
+
+arrowLeft.addEventListener("click", (e) => {
+    e.preventDefault();
+    offset += 225;
+    if (offset > overlayWidth){
+        offset = 0;
+    }
+    servicesSlides.forEach(slide => {
+        slide.style.transform = `translateX(-${offset}px)`;
+    })
+    console.log(offset);   
+})
+
+arrowRight.addEventListener("click", (e) => {
+    e.preventDefault();
+    offset -= 225;
+    if (offset < 0) {
+        offset = overlayWidth;
+    }
+    servicesSlides.forEach(slide => {
+        slide.style.transform = `translateX(-${offset}px)`;
+    })
+    console.log(offset);
+})
