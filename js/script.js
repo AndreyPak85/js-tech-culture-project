@@ -32,11 +32,33 @@ freeVisit.addEventListener("click", () => {
 formCloseImg.forEach(item => {
     item.addEventListener("click", (e) => {
         freeVisitForm.classList.remove("display-block");
+        callbackForm.classList.remove("display-block");
     })
 })
 
 formOverlay.forEach(item => {
     item.addEventListener("click", () => {
         freeVisitForm.classList.remove("display-block");
+        callbackForm.classList.remove("display-block");
+
     })
 })
+
+/** 
+ * При клике открывается модальное окно id="callback_form"
+ * При нажатии на крестик или подложку - исчезать.
+ */
+
+ const callbackBtn = document.querySelectorAll(".callback-btn");
+ const callbackForm = document.querySelector("#callback_form");
+ 
+ 
+ 
+ callbackBtn.forEach( btn => {
+     btn.addEventListener("click", () => {
+        callbackForm.classList.add("display-block"); 
+     })
+ })
+ 
+
+ 
