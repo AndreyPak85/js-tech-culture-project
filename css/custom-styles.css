@@ -1,0 +1,105 @@
+.gallery-slider {
+    position: relative;
+    height: 480px;
+}
+
+.main-slider {
+  position: relative;
+}
+
+.portfolio-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    background-size: 34px;
+    border-radius: 50%;
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease; }
+    .portfolio-btn.prev {
+      left: 0px;
+      background-image: url("../images/left-arrow.svg");
+      background-position: 25% 50%; }
+    .portfolio-btn.next {
+      right: 0px;
+      background-image: url("../images/right-arrow.svg");
+      background-position: 75% 50%; }
+    .portfolio-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      -webkit-transition: background-color 0.2s ease;
+      transition: background-color 0.2s ease; }
+
+      .portfolio-dots {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        left: 50%;
+        margin-left: -50%;
+        margin-top: 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        z-index: 5; }
+        .portfolio-dots .dot {
+          cursor: pointer;
+          height: 3px;
+          width: 30px;
+          margin: 0 10px;
+          background-color: #fff;
+  }
+          .portfolio-dots .dot-active {
+            background-color:#ffd11a;
+}
+          .portfolio-dots .dot:hover {
+            background-color:#ffd11a;
+ }
+
+
+.main-slider .slide,.gallery-slider .slide {
+  position: absolute!important;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity .5s ease;
+  transition: opacity .5s ease; }
+  .gallery-slider .slide img {
+    height: auto;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .main-slider .slide-active, .gallery-slider .slide-active {
+    opacity: 1;
+    -webkit-transition: opacity .5s ease;
+    transition: opacity .5s ease; }
+
+.services-slider {
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+
+.services-slider .slide {
+  min-width: 215px;
+  transition: .2s linear;
+} 
+
+.no-club {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercaase;
+  font-size: 25px;
+}
+
