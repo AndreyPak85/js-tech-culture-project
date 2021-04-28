@@ -122,3 +122,41 @@ arrowRight.addEventListener("click", (e) => {
     })
     console.log(offset);
 })
+
+/** 
+ * Реализовать слайдер #3
+ */
+
+const gallerySlider = document.querySelector(".gallery-slider");
+const gallerySlides = gallerySlider.querySelectorAll(".slide")
+const galleryBtnRight = gallerySlider.querySelector("#arrow-right");
+const galleryBtnLeft = gallerySlider.querySelector("#arrow-left");
+let galleryIndex = 0
+
+galleryBtnRight.addEventListener("click", (e) => {
+    e.preventDefault();
+    galleryIndex++;
+    if (galleryIndex == 5)  galleryIndex = 0;
+    if (galleryIndex == 0) 
+        gallerySlides[galleryIndex].classList.add("slide-active");
+        gallerySlides[gallerySlides.length-1].classList.remove("slide-active");
+    if (galleryIndex > 0) {
+        gallerySlides[galleryIndex].classList.add("slide-active");
+        gallerySlides[galleryIndex-1].classList.remove("slide-active");
+    } 
+})
+
+galleryBtnLeft.addEventListener("click", (e) => {
+    e.preventDefault();
+    galleryIndex--;
+    if (galleryIndex < 0) galleryIndex = 4;
+
+    if (galleryIndex == 4) {
+        gallerySlides[galleryIndex].classList.add("slide-active");
+        gallerySlides[0].classList.remove("slide-active");
+    }
+    if (galleryIndex < 4) {
+        gallerySlides[galleryIndex].classList.add("slide-active");
+        gallerySlides[galleryIndex + 1].classList.remove("slide-active");
+    }    
+} ) 
