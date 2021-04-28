@@ -131,18 +131,25 @@ const gallerySlider = document.querySelector(".gallery-slider");
 const gallerySlides = gallerySlider.querySelectorAll(".slide")
 const galleryBtnRight = gallerySlider.querySelector("#arrow-right");
 const galleryBtnLeft = gallerySlider.querySelector("#arrow-left");
+const galleryDots = document.querySelectorAll(".portfolio-dots li");
+
 let galleryIndex = 0
 
 galleryBtnRight.addEventListener("click", (e) => {
     e.preventDefault();
     galleryIndex++;
     if (galleryIndex == 5)  galleryIndex = 0;
-    if (galleryIndex == 0) 
+    if (galleryIndex == 0) {
         gallerySlides[galleryIndex].classList.add("slide-active");
         gallerySlides[gallerySlides.length-1].classList.remove("slide-active");
+        galleryDots[galleryIndex].classList.add("dot-active");
+        galleryDots[galleryDots.length-1].classList.remove("dot-active");
+    }
     if (galleryIndex > 0) {
         gallerySlides[galleryIndex].classList.add("slide-active");
         gallerySlides[galleryIndex-1].classList.remove("slide-active");
+        galleryDots[galleryIndex].classList.add("dot-active");
+        galleryDots[galleryIndex-1].classList.remove("dot-active");
     } 
 })
 
@@ -154,9 +161,24 @@ galleryBtnLeft.addEventListener("click", (e) => {
     if (galleryIndex == 4) {
         gallerySlides[galleryIndex].classList.add("slide-active");
         gallerySlides[0].classList.remove("slide-active");
+        galleryDots[galleryIndex].classList.add("dot-active");
+        galleryDots[0].classList.remove("dot-active");
     }
     if (galleryIndex < 4) {
         gallerySlides[galleryIndex].classList.add("slide-active");
         gallerySlides[galleryIndex + 1].classList.remove("slide-active");
+        galleryDots[galleryIndex].classList.add("dot-active");
+        galleryDots[galleryIndex + 1].classList.remove("dot-active");
     }    
 } ) 
+
+/** 
+ * Реализовать калькулятор цены взять со страниц клубов
+ * 
+ * 
+ */
+
+const price = document.querySelector("#price-total");
+const inputMozaika = document.querySelector("#card_leto_mozaika");
+const inputShelkovo = document.querySelector("#card_leto_schelkovo");
+
