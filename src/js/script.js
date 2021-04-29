@@ -5,6 +5,7 @@ import {gift} from './modules/gift';
 import {sliders} from './modules/sliders';
 import {calc} from './modules/calc';
 import {forms} from './modules/forms';
+import {favicon} from './modules/favicon';
 
 
 popup();
@@ -14,5 +15,5 @@ gift();
 sliders();
 calc();
 forms();
-
+favicon();
 

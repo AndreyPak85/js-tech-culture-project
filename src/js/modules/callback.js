@@ -7,11 +7,10 @@ export function callback() {
     const callbackBtn = document.querySelectorAll(".callback-btn");
     const callbackForm = document.querySelector("#callback_form");
 
-
-
     callbackBtn.forEach(btn => {
         btn.addEventListener("click", () => {
             callbackForm.classList.add("display-block");
         })
     })
+
 }

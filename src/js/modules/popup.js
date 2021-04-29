@@ -17,3 +17,21 @@ export function popup() {
         }
     })
 }
+
+const forms = document.querySelectorAll('.popup');
+const closeForms = document.querySelectorAll(".close-form img")
+const overlay = document.querySelectorAll(".overlay")
+
+overlay.forEach(item => {
+    item.addEventListener('click', () => {
+        forms.forEach(item => item.classList.remove("display-block"));
+    })
+})
+
+closeForms.forEach(item => {
+    item.addEventListener("click", () => {
+        forms.forEach(item => item.classList.remove("display-block"));
+  
+    })
+})
+
