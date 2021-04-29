@@ -30,6 +30,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/js/modules/checkRu.js":
+/*!***********************************!*\
+  !*** ./src/js/modules/checkRu.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"checkTextInputs\": () => (/* binding */ checkTextInputs)\n/* harmony export */ });\n/**\r\n * Заполнение имени и комментария - только на русском языке. \r\n */\r\n\r\nconst checkTextInputs = (selector) => {\r\n    const txtInputs = document.querySelectorAll(selector);\r\n\r\n    txtInputs.forEach(input => {\r\n        input.addEventListener('keypress', function (e) {\r\n            if (e.key.match(/[^а-я 0-9]/ig)) {\r\n                e.preventDefault();\r\n            }\r\n        });\r\n    });\r\n};\n\n//# sourceURL=webpack://src/./src/js/modules/checkRu.js?");
+
+/***/ }),
+
 /***/ "./src/js/modules/favicon.js":
 /*!***********************************!*\
   !*** ./src/js/modules/favicon.js ***!
@@ -57,6 +67,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"gift\": () => (/* binding */ gift)\n/* harmony export */ });\n/** \r\n * При клике на подарок должно появляться модальное окно (id=\"gift\") и сам подарок полностью исчезает со страницы. \r\n * При нажатии на крестик или подложку окно исчезает.\r\n */\r\n\r\nfunction gift() {\r\n    const gift = document.querySelector(\".fixed-gift\");\r\n    const giftModal = document.querySelector(\"#gift\");\r\n\r\n    gift.addEventListener(\"click\", (e) => {\r\n        giftModal.classList.add(\"display-block\");\r\n        e.target.classList.add(\"display-none\");\r\n    })\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/gift.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/mask.js":
+/*!********************************!*\
+  !*** ./src/js/modules/mask.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"mask\": () => (/* binding */ mask)\n/* harmony export */ });\n/**\r\n * Необходима маска или валидация номера телефона (нужное кол-во чисел, код). \r\n */\r\n\r\nfunction mask(selector, masked = '+7 (___) ___-__-__') {\r\n    const elems = document.querySelectorAll(selector);\r\n\r\n    function createMask(event) {\r\n        const keyCode = event.keyCode;\r\n        const template = masked,\r\n            def = template.replace(/\\D/g, \"\"),\r\n            val = this.value.replace(/\\D/g, \"\");\r\n        let i = 0,\r\n            newValue = template.replace(/[_\\d]/g, function (a) {\r\n                return i < val.length ? val.charAt(i++) || def.charAt(i) : a;\r\n            });\r\n        i = newValue.indexOf(\"_\");\r\n        if (i !== -1) {\r\n            newValue = newValue.slice(0, i);\r\n        }\r\n        let reg = template.substr(0, this.value.length).replace(/_+/g,\r\n            function (a) {\r\n                return \"\\\\d{1,\" + a.length + \"}\";\r\n            }).replace(/[+()]/g, \"\\\\$&\");\r\n        reg = new RegExp(\"^\" + reg + \"$\");\r\n        if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {\r\n            this.value = newValue;\r\n        }\r\n        if (event.type === \"blur\" && this.value.length < 5) {\r\n            this.value = \"\";\r\n        }\r\n\r\n    }\r\n\r\n    for (const elem of elems) {\r\n        elem.addEventListener(\"input\", createMask);\r\n        elem.addEventListener(\"focus\", createMask);\r\n        elem.addEventListener(\"blur\", createMask);\r\n    }\r\n\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/mask.js?");
 
 /***/ }),
 
@@ -96,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/popup */ \"./src/js/modules/popup.js\");\n/* harmony import */ var _modules_visit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/visit */ \"./src/js/modules/visit.js\");\n/* harmony import */ var _modules_callback__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/callback */ \"./src/js/modules/callback.js\");\n/* harmony import */ var _modules_gift__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/gift */ \"./src/js/modules/gift.js\");\n/* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/sliders */ \"./src/js/modules/sliders.js\");\n/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/calc */ \"./src/js/modules/calc.js\");\n/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/forms */ \"./src/js/modules/forms.js\");\n/* harmony import */ var _modules_favicon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/favicon */ \"./src/js/modules/favicon.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_popup__WEBPACK_IMPORTED_MODULE_0__.popup)();\r\n(0,_modules_visit__WEBPACK_IMPORTED_MODULE_1__.visit)();\r\n(0,_modules_callback__WEBPACK_IMPORTED_MODULE_2__.callback)();\r\n(0,_modules_gift__WEBPACK_IMPORTED_MODULE_3__.gift)();\r\n(0,_modules_sliders__WEBPACK_IMPORTED_MODULE_4__.sliders)();\r\n(0,_modules_calc__WEBPACK_IMPORTED_MODULE_5__.calc)();\r\n(0,_modules_forms__WEBPACK_IMPORTED_MODULE_6__.forms)();\r\n(0,_modules_favicon__WEBPACK_IMPORTED_MODULE_7__.favicon)();\r\n\r\n\n\n//# sourceURL=webpack://src/./src/js/script.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/popup */ \"./src/js/modules/popup.js\");\n/* harmony import */ var _modules_visit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/visit */ \"./src/js/modules/visit.js\");\n/* harmony import */ var _modules_callback__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/callback */ \"./src/js/modules/callback.js\");\n/* harmony import */ var _modules_gift__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/gift */ \"./src/js/modules/gift.js\");\n/* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/sliders */ \"./src/js/modules/sliders.js\");\n/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/calc */ \"./src/js/modules/calc.js\");\n/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/forms */ \"./src/js/modules/forms.js\");\n/* harmony import */ var _modules_favicon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/favicon */ \"./src/js/modules/favicon.js\");\n/* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/mask */ \"./src/js/modules/mask.js\");\n/* harmony import */ var _modules_checkRu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/checkRu */ \"./src/js/modules/checkRu.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_popup__WEBPACK_IMPORTED_MODULE_0__.popup)();\r\n(0,_modules_visit__WEBPACK_IMPORTED_MODULE_1__.visit)();\r\n(0,_modules_callback__WEBPACK_IMPORTED_MODULE_2__.callback)();\r\n(0,_modules_gift__WEBPACK_IMPORTED_MODULE_3__.gift)();\r\n(0,_modules_sliders__WEBPACK_IMPORTED_MODULE_4__.sliders)();\r\n(0,_modules_calc__WEBPACK_IMPORTED_MODULE_5__.calc)();\r\n(0,_modules_forms__WEBPACK_IMPORTED_MODULE_6__.forms)();\r\n(0,_modules_favicon__WEBPACK_IMPORTED_MODULE_7__.favicon)();\r\n(0,_modules_mask__WEBPACK_IMPORTED_MODULE_8__.mask)('[name=\"phone\"]')\r\n;(0,_modules_checkRu__WEBPACK_IMPORTED_MODULE_9__.checkTextInputs)('[name=\"name\"]');\n\n//# sourceURL=webpack://src/./src/js/script.js?");
 
 /***/ })
 

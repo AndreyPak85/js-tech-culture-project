@@ -6,7 +6,8 @@ import {sliders} from './modules/sliders';
 import {calc} from './modules/calc';
 import {forms} from './modules/forms';
 import {favicon} from './modules/favicon';
-
+import {mask} from './modules/mask';
+import {checkTextInputs} from './modules/checkRu';
 
 popup();
 visit();
@@ -16,4 +17,5 @@ sliders();
 calc();
 forms();
 favicon();
-
+mask('[name="phone"]')
+checkTextInputs('[name="name"]');
