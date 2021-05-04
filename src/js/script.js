@@ -9,7 +9,7 @@ import {favicon} from './modules/favicon';
 import {mask} from './modules/mask';
 import {checkTextInputs} from './modules/checkRu';
 
-popup();
+popup('.clubs-list', '.clubs-list ul');
 visit();
 callback();
 gift();

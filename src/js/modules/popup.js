@@ -3,35 +3,15 @@
  * открывается выпадающее меню (есть в верстке)
  */
 
-export function popup() {
-    const clubSelect = document.querySelector(".club-select");
-    const clubSelectList = document.querySelector(".clubs-list ul");
+export function popup(selector, selectorDisplay) {
 
-    clubSelect.addEventListener("click", () => {
-        if (clubSelectList.classList.contains("display-block")) {
-            clubSelectList.classList.add("display-none");
-            clubSelectList.classList.remove("display-block");
-        } else {
-            clubSelectList.classList.add("display-block");
-            clubSelectList.classList.remove("display-remove");
-        }
+    const popupClick = document.querySelector(selector);
+    const popupDisplay = document.querySelector(selectorDisplay)
+
+
+    popupClick.addEventListener("click", (e) => {
+        popupDisplay.classList.toggle('display-block');
+        console.log('ap')
     })
+
 }
-
-const forms = document.querySelectorAll('.popup');
-const closeForms = document.querySelectorAll(".close-form img")
-const overlay = document.querySelectorAll(".overlay")
-
-overlay.forEach(item => {
-    item.addEventListener('click', () => {
-        forms.forEach(item => item.classList.remove("display-block"));
-    })
-})
-
-closeForms.forEach(item => {
-    item.addEventListener("click", () => {
-        forms.forEach(item => item.classList.remove("display-block"));
-  
-    })
-})
-
