@@ -3,12 +3,14 @@
  * При нажатии на крестик или подложку окно исчезает.
  */
 
-export function gift() {
-    const gift = document.querySelector(".fixed-gift");
-    const giftModal = document.querySelector("#gift");
+import {
+    showModal
+} from './show-modal';
 
-    gift.addEventListener("click", (e) => {
-        giftModal.classList.add("display-block");
-        e.target.classList.add("display-none");
+export function gift(selector, showElement) {
+
+    showModal(selector, showElement)
+    document.querySelector(selector).addEventListener('click', (e) => {
+        e.target.remove();
     })
 }

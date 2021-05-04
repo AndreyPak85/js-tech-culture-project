@@ -20,16 +20,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/js/modules/callback.js":
-/*!************************************!*\
-  !*** ./src/js/modules/callback.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"callback\": () => (/* binding */ callback)\n/* harmony export */ });\n/** \r\n * При клике открывается модальное окно id=\"callback_form\"\r\n * При нажатии на крестик или подложку - исчезать.\r\n */\r\nfunction callback() {\r\n\r\n    const callbackBtn = document.querySelectorAll(\".callback-btn\");\r\n    const callbackForm = document.querySelector(\"#callback_form\");\r\n\r\n    callbackBtn.forEach(btn => {\r\n        btn.addEventListener(\"click\", () => {\r\n            callbackForm.classList.add(\"display-block\");\r\n        })\r\n    })\r\n\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/callback.js?");
-
-/***/ }),
-
 /***/ "./src/js/modules/checkRu.js":
 /*!***********************************!*\
   !*** ./src/js/modules/checkRu.js ***!
@@ -37,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"checkTextInputs\": () => (/* binding */ checkTextInputs)\n/* harmony export */ });\n/**\r\n * Заполнение имени и комментария - только на русском языке. \r\n */\r\n\r\nconst checkTextInputs = (selector) => {\r\n    const txtInputs = document.querySelectorAll(selector);\r\n\r\n    txtInputs.forEach(input => {\r\n        input.addEventListener('keypress', function (e) {\r\n            if (e.key.match(/[^а-я 0-9]/ig)) {\r\n                e.preventDefault();\r\n            }\r\n        });\r\n    });\r\n};\n\n//# sourceURL=webpack://src/./src/js/modules/checkRu.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/close-modal.js":
+/*!***************************************!*\
+  !*** ./src/js/modules/close-modal.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"closeModal\": () => (/* binding */ closeModal)\n/* harmony export */ });\nfunction closeModal(selector) {\r\n\r\n    const closeElement = document.querySelectorAll(selector);\r\n\r\n    closeElement.forEach(item => {\r\n        item.addEventListener(\"click\", () => {\r\n            document.querySelectorAll('.popup').forEach(item => {\r\n                item.classList.remove('display-block');\r\n            })\r\n        })\r\n\r\n    })\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/close-modal.js?");
 
 /***/ }),
 
@@ -66,7 +66,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"gift\": () => (/* binding */ gift)\n/* harmony export */ });\n/** \r\n * При клике на подарок должно появляться модальное окно (id=\"gift\") и сам подарок полностью исчезает со страницы. \r\n * При нажатии на крестик или подложку окно исчезает.\r\n */\r\n\r\nfunction gift() {\r\n    const gift = document.querySelector(\".fixed-gift\");\r\n    const giftModal = document.querySelector(\"#gift\");\r\n\r\n    gift.addEventListener(\"click\", (e) => {\r\n        giftModal.classList.add(\"display-block\");\r\n        e.target.classList.add(\"display-none\");\r\n    })\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/gift.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"gift\": () => (/* binding */ gift)\n/* harmony export */ });\n/* harmony import */ var _show_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./show-modal */ \"./src/js/modules/show-modal.js\");\n/** \r\n * При клике на подарок должно появляться модальное окно (id=\"gift\") и сам подарок полностью исчезает со страницы. \r\n * При нажатии на крестик или подложку окно исчезает.\r\n */\r\n\r\n\r\n\r\nfunction gift(selector, showElement) {\r\n\r\n    (0,_show_modal__WEBPACK_IMPORTED_MODULE_0__.showModal)(selector, showElement)\r\n    document.querySelector(selector).addEventListener('click', (e) => {\r\n        e.target.remove();\r\n    })\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/gift.js?");
 
 /***/ }),
 
@@ -86,7 +86,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"popup\": () => (/* binding */ popup)\n/* harmony export */ });\n/** \r\n * При клике на кнопку “Выбрать клуб”\r\n * открывается выпадающее меню (есть в верстке)\r\n */\r\n\r\nfunction popup(selector, selectorDisplay) {\r\n\r\n    const popupClick = document.querySelector(selector);\r\n    const popupDisplay = document.querySelector(selectorDisplay)\r\n\r\n\r\n    popupClick.addEventListener(\"click\", (e) => {\r\n        popupDisplay.classList.toggle('display-block');\r\n        console.log('ap')\r\n    })\r\n\r\n\r\n\r\n    //     const clubSelect = document.querySelector(\".club-select\");\r\n    //     const clubSelectList = document.querySelector(\".clubs-list ul\");\r\n\r\n    //     clubSelect.addEventListener(\"click\", () => {\r\n    //         if (clubSelectList.classList.contains(\"display-block\")) {\r\n    //             clubSelectList.classList.add(\"display-none\");\r\n    //             clubSelectList.classList.remove(\"display-block\");\r\n    //         } else {\r\n    //             clubSelectList.classList.add(\"display-block\");\r\n    //             clubSelectList.classList.remove(\"display-remove\");\r\n    //         }\r\n    //     })\r\n    // }\r\n\r\n    // const forms = document.querySelectorAll('.popup');\r\n    // const closeForms = document.querySelectorAll(\".close-form img\")\r\n    // const overlay = document.querySelectorAll(\".overlay\")\r\n\r\n    // overlay.forEach(item => {\r\n    //     item.addEventListener('click', () => {\r\n    //         forms.forEach(item => item.classList.remove(\"display-block\"));\r\n    //     })\r\n    // })\r\n\r\n    // closeForms.forEach(item => {\r\n    //     item.addEventListener(\"click\", () => {\r\n    //         forms.forEach(item => item.classList.remove(\"display-block\"));\r\n\r\n    //     })\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/popup.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"popup\": () => (/* binding */ popup)\n/* harmony export */ });\n/** \r\n * При клике на кнопку “Выбрать клуб”\r\n * открывается выпадающее меню (есть в верстке)\r\n */\r\n\r\nfunction popup(selector, selectorDisplay) {\r\n\r\n    const popupClick = document.querySelector(selector);\r\n    const popupDisplay = document.querySelector(selectorDisplay)\r\n\r\n\r\n    popupClick.addEventListener(\"click\", (e) => {\r\n        popupDisplay.classList.toggle('display-block');\r\n        console.log('ap')\r\n    })\r\n\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/popup.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/show-modal.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/show-modal.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"showModal\": () => (/* binding */ showModal)\n/* harmony export */ });\nfunction showModal(selector, showElement) {\r\n\r\n    const clickModal = document.querySelector(selector);\r\n    const showModal = document.querySelector(showElement);\r\n\r\n    clickModal.addEventListener('click', () => {\r\n        showModal.classList.add('display-block');\r\n    })\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/show-modal.js?");
 
 /***/ }),
 
@@ -100,23 +110,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/js/modules/visit.js":
-/*!*********************************!*\
-  !*** ./src/js/modules/visit.js ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"visit\": () => (/* binding */ visit)\n/* harmony export */ });\n/** \r\n * При клике на эту надпись открывается модальное окно id=’free_visit_form’\r\n * При нажатии на крестик или подложку - исчезать.\r\n */\r\n\r\nfunction visit() {\r\n    const freeVisit = document.querySelector(\".free-visit p a\");\r\n    const freeVisitForm = document.querySelector(\"#free_visit_form\");\r\n\r\n\r\n    freeVisit.addEventListener(\"click\", () => {\r\n        freeVisitForm.classList.add(\"display-block\");\r\n    })\r\n\r\n}\n\n//# sourceURL=webpack://src/./src/js/modules/visit.js?");
-
-/***/ }),
-
 /***/ "./src/js/script.js":
 /*!**************************!*\
   !*** ./src/js/script.js ***!
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/popup */ \"./src/js/modules/popup.js\");\n/* harmony import */ var _modules_visit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/visit */ \"./src/js/modules/visit.js\");\n/* harmony import */ var _modules_callback__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/callback */ \"./src/js/modules/callback.js\");\n/* harmony import */ var _modules_gift__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/gift */ \"./src/js/modules/gift.js\");\n/* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/sliders */ \"./src/js/modules/sliders.js\");\n/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/calc */ \"./src/js/modules/calc.js\");\n/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/forms */ \"./src/js/modules/forms.js\");\n/* harmony import */ var _modules_favicon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/favicon */ \"./src/js/modules/favicon.js\");\n/* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/mask */ \"./src/js/modules/mask.js\");\n/* harmony import */ var _modules_checkRu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/checkRu */ \"./src/js/modules/checkRu.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_popup__WEBPACK_IMPORTED_MODULE_0__.popup)('.clubs-list', '.clubs-list ul');\r\n(0,_modules_visit__WEBPACK_IMPORTED_MODULE_1__.visit)();\r\n(0,_modules_callback__WEBPACK_IMPORTED_MODULE_2__.callback)();\r\n(0,_modules_gift__WEBPACK_IMPORTED_MODULE_3__.gift)();\r\n(0,_modules_sliders__WEBPACK_IMPORTED_MODULE_4__.sliders)();\r\n(0,_modules_calc__WEBPACK_IMPORTED_MODULE_5__.calc)();\r\n(0,_modules_forms__WEBPACK_IMPORTED_MODULE_6__.forms)();\r\n(0,_modules_favicon__WEBPACK_IMPORTED_MODULE_7__.favicon)();\r\n(0,_modules_mask__WEBPACK_IMPORTED_MODULE_8__.mask)('[name=\"phone\"]')\r\n;(0,_modules_checkRu__WEBPACK_IMPORTED_MODULE_9__.checkTextInputs)('[name=\"name\"]');\n\n//# sourceURL=webpack://src/./src/js/script.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/popup */ \"./src/js/modules/popup.js\");\n/* harmony import */ var _modules_show_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/show-modal */ \"./src/js/modules/show-modal.js\");\n/* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/sliders */ \"./src/js/modules/sliders.js\");\n/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calc */ \"./src/js/modules/calc.js\");\n/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ \"./src/js/modules/forms.js\");\n/* harmony import */ var _modules_favicon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/favicon */ \"./src/js/modules/favicon.js\");\n/* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/mask */ \"./src/js/modules/mask.js\");\n/* harmony import */ var _modules_checkRu__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/checkRu */ \"./src/js/modules/checkRu.js\");\n/* harmony import */ var _modules_close_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/close-modal */ \"./src/js/modules/close-modal.js\");\n/* harmony import */ var _modules_gift__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/gift */ \"./src/js/modules/gift.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_popup__WEBPACK_IMPORTED_MODULE_0__.popup)('.clubs-list', '.clubs-list ul');\r\n\r\n(0,_modules_sliders__WEBPACK_IMPORTED_MODULE_2__.sliders)();\r\n(0,_modules_calc__WEBPACK_IMPORTED_MODULE_3__.calc)();\r\n(0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__.forms)();\r\n(0,_modules_favicon__WEBPACK_IMPORTED_MODULE_5__.favicon)();\r\n(0,_modules_mask__WEBPACK_IMPORTED_MODULE_6__.mask)('[name=\"phone\"]')\r\n;(0,_modules_checkRu__WEBPACK_IMPORTED_MODULE_7__.checkTextInputs)('[name=\"name\"]');\r\n\r\n\r\n(0,_modules_show_modal__WEBPACK_IMPORTED_MODULE_1__.showModal)('[data-popup=\"#free_visit_form\"]', '#free_visit_form');\r\n(0,_modules_show_modal__WEBPACK_IMPORTED_MODULE_1__.showModal)('[data-popup=\"#callback_form\"]', '#callback_form');\r\n(0,_modules_gift__WEBPACK_IMPORTED_MODULE_9__.gift)('.fixed-gift', '#gift');\r\n\r\n(0,_modules_close_modal__WEBPACK_IMPORTED_MODULE_8__.closeModal)('.overlay')\r\n;(0,_modules_close_modal__WEBPACK_IMPORTED_MODULE_8__.closeModal)('.close-form')\n\n//# sourceURL=webpack://src/./src/js/script.js?");
 
 /***/ })
 
