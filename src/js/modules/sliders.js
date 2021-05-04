@@ -1,9 +1,7 @@
-export function sliders() {
-    /**
-     * На первой странице реализовать слайдер
-     */
+function sliderMain(selector) {
+
     let count = 0;
-    const mainSlider = document.querySelectorAll(".main-slider .slide");
+    const mainSlider = document.querySelectorAll(selector);
     setInterval(() => {
         if (count == 5) count = 0;
         mainSlider[count].classList.add("slide-active");
@@ -13,17 +11,63 @@ export function sliders() {
             mainSlider[count - 1].classList.remove("slide-active");
         }
         count++;
-    }, 3000)
+    }, 1000)
+
+}
 
 
+function sliderPortfolio(selector) {
+    const portfolioSlider = document.querySelector(selector);
+    const portfolioRight = portfolioSlider.querySelector('#arrow-right');
+    const portfolioLeft = portfolioSlider.querySelector('#arrow-left');
+    const portfolioSlides = portfolioSlider.querySelectorAll('.slide');
+    const portfolioDots = portfolioSlider.querySelectorAll('.dot');
 
-    /** 
-     * Реализовать сладер #2
-     */
+    let portfolioIndex = 0;
 
-    const arrowLeft = document.querySelector("#arrow-left");
-    const arrowRight = document.querySelector("#arrow-right");
-    const servicesSlider = document.querySelector(".services-slider");
+    portfolioRight.addEventListener('click', (e) => {
+        e.preventDefault();
+        portfolioIndex++;
+        if (portfolioIndex == 5) portfolioIndex = 0;
+        if (portfolioIndex == 0) {
+            portfolioSlides[portfolioIndex].classList.add("slide-active");
+            portfolioSlides[portfolioSlides.length - 1].classList.remove("slide-active");
+            portfolioDots[portfolioIndex].classList.add("dot-active");
+            portfolioDots[(portfolioDots.length - 1)].classList.remove('dot-active');
+        }
+
+        if (portfolioIndex > 0) {
+            portfolioSlides[portfolioIndex].classList.add("slide-active");
+            portfolioSlides[portfolioIndex - 1].classList.remove("slide-active");
+            portfolioDots[portfolioIndex].classList.add("dot-active");
+            portfolioDots[portfolioIndex - 1].classList.remove("dot-active");
+        }
+    })
+
+    portfolioLeft.addEventListener('click', (e) => {
+        e.preventDefault();
+        portfolioIndex--;
+        if (portfolioIndex < 0) portfolioIndex = 4;
+        if (portfolioIndex == 4) {
+            portfolioSlides[portfolioIndex].classList.add("slide-active");
+            portfolioSlides[0].classList.remove("slide-active");
+            portfolioDots[portfolioIndex].classList.add("dot-active");
+            portfolioDots[0].classList.remove("dot-active");
+        }
+        if (portfolioIndex < 4) {
+            portfolioSlides[portfolioIndex].classList.add("slide-active");
+            portfolioSlides[portfolioIndex + 1].classList.remove("slide-active");
+            portfolioDots[portfolioIndex].classList.add("dot-active");
+            galleryDots[portfolioIndex + 1].classList.remove("dot-active");
+        }
+    })
+}
+
+
+function sliderService(selector) {
+    const servicesSlider = document.querySelector(selector);
+    const arrowLeft = servicesSlider.querySelector("#arrow-left");
+    const arrowRight = servicesSlider.querySelector("#arrow-right");
     const servicesSlides = servicesSlider.querySelectorAll(".slide");
     const overlayWidth = parseInt(window.getComputedStyle(servicesSlider).width);
     let offset = 0;
@@ -49,54 +93,11 @@ export function sliders() {
             slide.style.transform = `translateX(-${offset}px)`;
         })
     })
-
-    /** 
-     * Реализовать слайдер #3
-     */
-
-    const gallerySlider = document.querySelector(".gallery-slider");
-    const gallerySlides = gallerySlider.querySelectorAll(".slide")
-    const galleryBtnRight = gallerySlider.querySelector("#arrow-right");
-    const galleryBtnLeft = gallerySlider.querySelector("#arrow-left");
-    const galleryDots = document.querySelectorAll(".portfolio-dots li");
-
-    let galleryIndex = 0
-
-    galleryBtnRight.addEventListener("click", (e) => {
-        e.preventDefault();
-        galleryIndex++;
-        if (galleryIndex == 5) galleryIndex = 0;
-        if (galleryIndex == 0) {
-            gallerySlides[galleryIndex].classList.add("slide-active");
-            gallerySlides[gallerySlides.length - 1].classList.remove("slide-active");
-            galleryDots[galleryIndex].classList.add("dot-active");
-            galleryDots[galleryDots.length - 1].classList.remove("dot-active");
-        }
-        if (galleryIndex > 0) {
-            gallerySlides[galleryIndex].classList.add("slide-active");
-            gallerySlides[galleryIndex - 1].classList.remove("slide-active");
-            galleryDots[galleryIndex].classList.add("dot-active");
-            galleryDots[galleryIndex - 1].classList.remove("dot-active");
-        }
-    })
-
-    galleryBtnLeft.addEventListener("click", (e) => {
-        e.preventDefault();
-        galleryIndex--;
-        if (galleryIndex < 0) galleryIndex = 4;
-
-        if (galleryIndex == 4) {
-            gallerySlides[galleryIndex].classList.add("slide-active");
-            gallerySlides[0].classList.remove("slide-active");
-            galleryDots[galleryIndex].classList.add("dot-active");
-            galleryDots[0].classList.remove("dot-active");
-        }
-        if (galleryIndex < 4) {
-            gallerySlides[galleryIndex].classList.add("slide-active");
-            gallerySlides[galleryIndex + 1].classList.remove("slide-active");
-            galleryDots[galleryIndex].classList.add("dot-active");
-            galleryDots[galleryIndex + 1].classList.remove("dot-active");
-        }
-    })
-
 }
+
+
+export {
+    sliderMain,
+    sliderPortfolio,
+    sliderService
+};

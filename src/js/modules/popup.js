@@ -11,7 +11,6 @@ export function popup(selector, selectorDisplay) {
 
     popupClick.addEventListener("click", (e) => {
         popupDisplay.classList.toggle('display-block');
-        console.log('ap')
     })
 
 }

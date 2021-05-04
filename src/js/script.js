@@ -6,11 +6,6 @@ import {
     showModal
 } from './modules/show-modal';
 
-
-import {
-    sliders
-} from './modules/sliders';
-
 import {
     calc
 } from './modules/calc';
@@ -40,9 +35,22 @@ import {
     gift
 } from './modules/gift';
 
+import {
+    sliderMain,
+    sliderPortfolio,
+    sliderService
+} from './modules/sliders';
+
 popup('.clubs-list', '.clubs-list ul');
 
-sliders();
+
+
+//sliders();
+sliderMain('.main-slider .slide')
+sliderPortfolio('.gallery-slider')
+sliderService('.services-slider')
+
+
 calc();
 forms();
 favicon();
@@ -56,3 +64,4 @@ gift('.fixed-gift', '#gift');
 
 closeModal('.overlay')
 closeModal('.close-form')
+closeModal('.close-btn')
