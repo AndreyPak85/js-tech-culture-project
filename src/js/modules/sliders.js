@@ -37,7 +37,6 @@ export function sliders() {
         servicesSlides.forEach(slide => {
             slide.style.transform = `translateX(-${offset}px)`;
         })
-        console.log(offset);
     })
 
     arrowRight.addEventListener("click", (e) => {
@@ -49,7 +48,6 @@ export function sliders() {
         servicesSlides.forEach(slide => {
             slide.style.transform = `translateX(-${offset}px)`;
         })
-        console.log(offset);
     })
 
     /** 
